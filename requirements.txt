@@ -1,0 +1,4 @@
+google-adk==2.1.0
+openai==2.30.0
+deepeval==4.0.5
+python-dotenv==1.2.2
