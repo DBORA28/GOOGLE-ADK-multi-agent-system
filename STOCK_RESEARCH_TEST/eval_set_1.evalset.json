@@ -1,0 +1,122 @@
+{
+  "eval_set_id": "eval_set_1",
+  "name": "eval_set_1",
+  "eval_cases": [
+    {
+      "eval_id": "analyse_aapl_stock",
+      "conversation": [
+        {
+          "invocation_id": "e-95d6a100-45b4-4609-9157-efa64bf81a40",
+          "user_content": {
+            "parts": [
+              {
+                "text": "analyse aapl stock\n\n"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "=== MARKET_SNAPSHOT ===\nTICKER     : AAPL\nPRICE      : $189.5\nCHANGE     : 1.2%\nRSI        : 72 → overbought\nSENTIMENT  : POSITIVE\nVOLATILITY : LOW\nTREND      : BULLISH\n=== END SNAPSHOT ==="
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "invocation_events": [
+              {
+                "author": "market_indicator_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-d5c965b4-6091-4bc9-ba4f-c96f3ba9de17",
+                        "args": {
+                          "ticker": "AAPL"
+                        },
+                        "name": "get_market_snapshot"
+                      },
+                      "thought_signature": "CiQBDDnWx7-plIelB1Xy6BIVJUl8IPNz1jK5ZUE1105UsoO2B_oKYAEMOdbHLVE0P5YeHcxG39DlZEVWaqV6_ggLIY3AaLrtdUYPKcceBvvwyrIHvS0_5wAvHGO93q-O54jjEhwflf2IJXGHqnwDk890aWeiNzIpD1f0dl8QVzEhffw-6WIk1AqBAQEMOdbHQU-_Hmzdgq3I3Y7lDE572XlhUut05uSZ-xjkSJrvG7coU3YIYUPRUzZI88RqHdFQTIOV4bCg0hTr1E39oacMT_4iXip55UriAnAhSMCaZGhrJvNeTQb4Kp_ykPgyRGc9oeiuUKTdx3WWOPRDN8-eXOKsNbOBsm_41WS5gw=="
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "market_indicator_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-d5c965b4-6091-4bc9-ba4f-c96f3ba9de17",
+                        "name": "get_market_snapshot",
+                        "response": {
+                          "ticker": "AAPL",
+                          "price": 189.5,
+                          "change_perc": 1.2,
+                          "volume": 58000000,
+                          "rsi": 72,
+                          "ma_20": 188.55,
+                          "ma_50": 181.16,
+                          "sentiment": "POSITIVE",
+                          "volatility": "LOW",
+                          "beta": 1.1,
+                          "trend": "BULLISH"
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "decision_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "=== BUY_SELL_DECISION ===\nTICKER     : AAPL\nCONFIDENCE : 0.6\nDECISION   : BUY\n=== END DECISION ===\n"
+                    },
+                    {
+                      "function_call": {
+                        "id": "adk-0f19e939-d11b-446b-83bf-3d86c6b8b7f1",
+                        "args": {},
+                        "name": "stop_monitoring"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "decision_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-0f19e939-d11b-446b-83bf-3d86c6b8b7f1",
+                        "name": "stop_monitoring",
+                        "response": {
+                          "action": "STOP_LOOP",
+                          "status": "Monitoring stopped by agent decision."
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              }
+            ]
+          },
+          "creation_timestamp": 1780301959.3056588
+        }
+      ],
+      "session_input": {
+        "app_name": "STOCK_RESEARCH_TEST",
+        "user_id": "user"
+      },
+      "creation_timestamp": 1780302474.080995
+    }
+  ],
+  "creation_timestamp": 1780299396.115295
+}
